@@ -8,12 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var isHotdog = false
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            VStack {
+                Text("🌭")
+                    .font(.largeTitle)
+                Text("Hot Dog Authenticator v 1.1")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Text("© TechDyne Global Propietary Systems Ltd.")
+                    .font(.footnote)
+            }
+            
+            Spacer()
+            
+            Button {
+                // select image
+            } label: {
+                Image(systemName: "plus.viewfinder")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200, height: 200)
+            }
+            
+            Spacer()
+            
+            Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
+                .fontWeight(.bold)
         }
         .padding()
     }
