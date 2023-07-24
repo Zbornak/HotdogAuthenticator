@@ -35,8 +35,16 @@ struct ContentView: View {
             
             Spacer()
             
-            Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
-                .fontWeight(.bold)
+            HStack {
+                ZStack {
+                    Text("🌭")
+                    Text(isHotdog ? "" : "❌")
+                }
+                .font(.title)
+                
+                Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
+                    .fontWeight(.bold)
+            }
         }
         .padding()
     }
