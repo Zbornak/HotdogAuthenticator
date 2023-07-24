@@ -11,6 +11,7 @@
 		199019092A6E78A60068B3F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199019082A6E78A60068B3F0 /* ContentView.swift */; };
 		1990190B2A6E78A70068B3F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1990190A2A6E78A70068B3F0 /* Assets.xcassets */; };
 		1990190E2A6E78A70068B3F0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1990190D2A6E78A70068B3F0 /* Preview Assets.xcassets */; };
+		199019152A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 199019142A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		199019082A6E78A60068B3F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1990190A2A6E78A70068B3F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1990190D2A6E78A70068B3F0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		199019142A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HotDogClassifier.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				199019062A6E78A60068B3F0 /* HotDogApp.swift */,
 				199019082A6E78A60068B3F0 /* ContentView.swift */,
+				199019142A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel */,
 				1990190A2A6E78A70068B3F0 /* Assets.xcassets */,
 				1990190C2A6E78A70068B3F0 /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				199019152A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel in Sources */,
 				199019092A6E78A60068B3F0 /* ContentView.swift in Sources */,
 				199019072A6E78A60068B3F0 /* HotDogApp.swift in Sources */,
 			);
@@ -270,6 +274,7 @@
 				DEVELOPMENT_TEAM = 3WR52V3W6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access so you can take a photo to be identified.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access so that you can pick an image to identify.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -300,6 +305,7 @@
 				DEVELOPMENT_TEAM = 3WR52V3W6H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access so you can take a photo to be identified.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access so that you can pick an image to identify.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
