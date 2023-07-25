@@ -53,16 +53,19 @@ struct ContentView: View {
         .padding()
     }
     
-    func calculateResult(image: Image?) {
+    func calculateResult(image: Image?) -> String {
         do {
             let config = MLModelConfiguration()
             let model = try HotDogClassifier(configuration: config)
             let input = HotDogClassifierInput(image: image as! CVPixelBuffer)
             let output = try model.prediction(input: input)
             let text = output.classLabel
+            return text
         } catch {
             print("Failed with error: \(error.localizedDescription).")
         }
+        
+        return "🤷🏼‍♂️"
     }
 }
 
