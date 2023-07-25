@@ -62,6 +62,12 @@ struct ContentView: View {
             }
         }
         .padding()
+        .onChange(of: inputImage) { _ in
+            loadImage()
+        }
+        .sheet(isPresented: $showingImagePicker) {
+            ImagePicker(image: $inputImage)
+        }
     }
     
     func loadImage() {
