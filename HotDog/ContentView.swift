@@ -78,28 +78,28 @@ struct ContentView: View {
         image = Image(uiImage: inputImage)
     }
     
-//    func calculateResult() {
-//        do {
-//            let config = MLModelConfiguration()
-//            let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
-//            let request = VNCoreMLRequest(model: model, completionHandler: results)
-//            let handler = VNImageRequestHandler(url: image)
-//            try handler.perform([request])
-//
-//            func results(request: VNRequest, error: Error?) {
-//                guard let results = request.results as? [VNClassificationObservation] else {
-//                    fatalError("Fatal error.")
-//                }
-//
-//                for classification in results {
-//                    print(classification.identifier, classification.confidence)
-//                }
-//            }
-//
-//        } catch {
-//            print("Failed with error: \(error.localizedDescription).")
-//        }
-//    }
+    func calculateResult() {
+        do {
+            let config = MLModelConfiguration()
+            let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
+            let request = VNCoreMLRequest(model: model, completionHandler: results)
+            let handler = VNImageRequestHandler(url: image)
+            try handler.perform([request])
+
+            func results(request: VNRequest, error: Error?) {
+                guard let results = request.results as? [VNClassificationObservation] else {
+                    fatalError("Fatal error.")
+                }
+
+                for classification in results {
+                    print(classification.identifier, classification.confidence)
+                }
+            }
+
+        } catch {
+            print("Failed with error: \(error.localizedDescription).")
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
