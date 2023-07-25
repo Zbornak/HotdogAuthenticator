@@ -13,7 +13,9 @@ import Vision
 
 struct ContentView: View {
     @State private var isHotdog = false
-    @State private var input: Image?
+    @State private var image: Image?
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
     
     var body: some View {
         VStack {
@@ -32,14 +34,18 @@ struct ContentView: View {
             ZStack {
                 Rectangle()
                     .fill(.secondary)
+                    .frame(width: 299, height: 299)
                 
                 Image(systemName: "photo")
                     .foregroundColor(.white)
                 
-                input?
+                image?
                     .resizable()
                     .scaledToFit()
                     .frame(width: 299, height: 299)
+            }
+            .onTapGesture {
+                showingImagePicker = true
             }
             
             Spacer()
@@ -58,28 +64,36 @@ struct ContentView: View {
         .padding()
     }
     
-    func calculateResult() {
-        do {
-            let config = MLModelConfiguration()
-            let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
-            let request = VNCoreMLRequest(model: model, completionHandler: results)
-            let handler = VNImageRequestHandler(url: input)
-            try handler.perform([request])
-            
-            func results(request: VNRequest, error: Error?) {
-                guard let results = request.results as? [VNClassificationObservation] else {
-                    fatalError("Fatal error.")
-                }
-                
-                for classification in results {
-                    print(classification.identifier, classification.confidence)
-                }
-            }
-           
-        } catch {
-            print("Failed with error: \(error.localizedDescription).")
+    func loadImage() {
+        guard let inputImage = inputImage else {
+            return
         }
+        
+        image = Image(uiImage: inputImage)
     }
+    
+//    func calculateResult() {
+//        do {
+//            let config = MLModelConfiguration()
+//            let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
+//            let request = VNCoreMLRequest(model: model, completionHandler: results)
+//            let handler = VNImageRequestHandler(url: image)
+//            try handler.perform([request])
+//
+//            func results(request: VNRequest, error: Error?) {
+//                guard let results = request.results as? [VNClassificationObservation] else {
+//                    fatalError("Fatal error.")
+//                }
+//
+//                for classification in results {
+//                    print(classification.identifier, classification.confidence)
+//                }
+//            }
+//
+//        } catch {
+//            print("Failed with error: \(error.localizedDescription).")
+//        }
+//    }
 }
 
 struct ContentView_Previews: PreviewProvider {
