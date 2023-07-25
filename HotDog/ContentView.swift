@@ -54,8 +54,6 @@ struct ContentView: View {
                 Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
                     .fontWeight(.bold)
             }
-            
-            Text("")
         }
         .padding()
     }
