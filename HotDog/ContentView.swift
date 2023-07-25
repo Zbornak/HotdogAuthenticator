@@ -8,6 +8,7 @@
 import CoreML
 import SwiftUI
 import UIKit
+import Vision
 
 struct ContentView: View {
     @State private var isHotdog = false
@@ -60,7 +61,7 @@ struct ContentView: View {
             let output = try model.prediction(input: input)
             let text = output.classLabel
         } catch {
-            print(error.localizedDescription)
+            print("Failed with error: \(error.localizedDescription).")
         }
     }
 }
