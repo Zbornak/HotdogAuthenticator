@@ -50,23 +50,34 @@ struct ContentView: View {
                 Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
                     .fontWeight(.bold)
             }
+            
+            Text("")
         }
         .padding()
     }
     
-    func calculateResult(image: Image) -> String {
+    func calculateResult() {
         do {
             let config = MLModelConfiguration()
-            let model = try HotDogClassifier(configuration: config)
-            let input = HotDogClassifierInput(image: image as! CVPixelBuffer)
-            let output = try model.prediction(input: input)
-            let text = output.classLabel
-            return text
+            let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
+            let request = VNCoreMLRequest(model: model, completionHandler: results)
+            let imageURL = URL(string: "\(input)")
+            let handler = VNImageRequestHandler(url: imageURL!)
+            try handler.perform([request])
+            
+            func results(request: VNRequest, error: Error?) {
+                guard let results = request.results as? [VNClassificationObservation] else {
+                    fatalError("Fatal error.")
+                }
+                
+                for classification in results {
+                    print(classification.identifier, classification.confidence)
+                }
+            }
+           
         } catch {
             print("Failed with error: \(error.localizedDescription).")
         }
-        
-        return "🤷🏼‍♂️"
     }
 }
 
