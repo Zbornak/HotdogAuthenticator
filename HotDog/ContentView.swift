@@ -13,7 +13,7 @@ import Vision
 
 struct ContentView: View {
     @State private var isHotdog = false
-    @State private var input = Image(systemName: "photo")
+    @State private var input: Image?
     
     var body: some View {
         VStack {
@@ -29,14 +29,17 @@ struct ContentView: View {
             
             Spacer()
             
-            Button {
-                calculateResult()
-            } label: {
-                input
+            ZStack {
+                Rectangle()
+                    .fill(.secondary)
+                
+                Image(systemName: "photo")
+                    .foregroundColor(.white)
+                
+                input?
                     .resizable()
                     .scaledToFit()
                     .frame(width: 299, height: 299)
-                    .clipped()
             }
             
             Spacer()
