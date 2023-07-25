@@ -12,7 +12,7 @@ import Vision
 
 struct ContentView: View {
     @State private var isHotdog = false
-    @State private var input: Image?
+    @State private var input = Image(systemName: "photo")
     
     var body: some View {
         VStack {
@@ -31,10 +31,11 @@ struct ContentView: View {
             Button {
                 // do stuff
             } label: {
-                Image(systemName: "photo")
+                input
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 200, height: 200)
+                    .frame(width: 299, height: 299)
+                    .clipped()
             }
             
             Spacer()
@@ -49,11 +50,13 @@ struct ContentView: View {
                 Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
                     .fontWeight(.bold)
             }
+            
+            Text("Hello")
         }
         .padding()
     }
     
-    func calculateResult(image: Image?) -> String {
+    func calculateResult(image: Image) -> String {
         do {
             let config = MLModelConfiguration()
             let model = try HotDogClassifier(configuration: config)
