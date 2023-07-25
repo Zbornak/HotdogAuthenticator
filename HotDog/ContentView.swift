@@ -5,6 +5,7 @@
 //  Created by Mark Strijdom on 24/07/2023.
 //
 
+import CoreImage
 import CoreML
 import SwiftUI
 import UIKit
@@ -29,7 +30,7 @@ struct ContentView: View {
             Spacer()
             
             Button {
-                // do stuff
+                calculateResult()
             } label: {
                 input
                     .resizable()
@@ -61,8 +62,7 @@ struct ContentView: View {
             let config = MLModelConfiguration()
             let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
             let request = VNCoreMLRequest(model: model, completionHandler: results)
-            let imageURL = URL(string: "\(input)")
-            let handler = VNImageRequestHandler(url: imageURL!)
+            let handler = VNImageRequestHandler(url: input)
             try handler.perform([request])
             
             func results(request: VNRequest, error: Error?) {
