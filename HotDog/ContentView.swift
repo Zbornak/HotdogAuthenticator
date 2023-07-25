@@ -83,7 +83,7 @@ struct ContentView: View {
             let config = MLModelConfiguration()
             let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
             let request = VNCoreMLRequest(model: model, completionHandler: results)
-            let handler = VNImageRequestHandler(url: image)
+            let handler = VNImageRequestHandler(cgImage: inputImage!.cgImage!, options: [:])
             try handler.perform([request])
 
             func results(request: VNRequest, error: Error?) {
