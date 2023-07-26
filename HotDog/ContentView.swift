@@ -48,6 +48,7 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: 299, height: 299)
                     .rotationEffect(.degrees(180))
+                    .scaleEffect(x: -1, y: 1)
             }
             .onTapGesture {
                 showingImagePicker = true
