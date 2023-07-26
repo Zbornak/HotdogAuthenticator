@@ -57,11 +57,11 @@ struct ContentView: View {
             Spacer()
             
             HStack {
-                ZStack {
-                    Text("🌭")
-                    Text(isHotdog ? "" : "❌")
-                }
-                .font(.largeTitle)
+//                ZStack {
+//                    Text("🌭")
+//                    Text(isHotdog ? "" : "❌")
+//                }
+//                .font(.largeTitle)
                 
                 Text(resultsText)
                     .fontWeight(.bold)
@@ -111,14 +111,6 @@ struct ContentView: View {
 
                 for classification in results {
                     print(classification.identifier, classification.confidence)
-                    
-                    if classification.confidence > 0.9 {
-                        resultsText = "Hot Dog"
-                        isHotdog = true
-                    } else {
-                        resultsText = "Not Hot Dog"
-                        isHotdog = false
-                    }
                 }
             }
 
