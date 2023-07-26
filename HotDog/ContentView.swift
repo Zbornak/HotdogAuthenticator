@@ -111,6 +111,7 @@ struct ContentView: View {
 
                 for classification in results {
                     print(classification.identifier, classification.confidence)
+                    // classification.confidence.0
                 }
             }
 
