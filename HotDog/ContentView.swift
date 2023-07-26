@@ -37,8 +37,11 @@ struct ContentView: View {
                     .fill(.secondary)
                     .frame(width: 299, height: 299)
                 
-                Image(systemName: "photo")
-                    .foregroundColor(.white)
+                VStack {
+                    Image(systemName: "photo")
+                    Text("Select an image")
+                }
+                .foregroundColor(.white)
                 
                 image?
                     .resizable()
