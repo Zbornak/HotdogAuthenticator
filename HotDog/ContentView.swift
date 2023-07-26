@@ -63,8 +63,9 @@ struct ContentView: View {
             Button {
                 calculateResult()
             } label: {
-                Text("Analyze")
+                Label("Analyze", systemImage: "magnifyingglass")
             }
+            .padding()
         }
         .padding()
         .onChange(of: inputImage) { _ in
