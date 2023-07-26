@@ -24,7 +24,7 @@ struct ContentView: View {
                 Text("Hot Dog Authenticator")
                     .font(.title)
                     .fontWeight(.bold)
-                Text("v1.1 XE")
+                Text("v1.1 XE α")
                     .font(.title)
                 Text("© TechDyne Global Propietary Systems Ltd.")
                     .font(.footnote)
