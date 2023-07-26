@@ -54,7 +54,7 @@ struct ContentView: View {
                     Text("🌭")
                     Text(isHotdog ? "" : "❌")
                 }
-                .font(.title)
+                .font(.largeTitle)
                 
                 Text(resultsText)
                     .fontWeight(.bold)
@@ -65,6 +65,7 @@ struct ContentView: View {
             } label: {
                 Label("Analyze", systemImage: "magnifyingglass")
             }
+            .disabled(image == nil)
             .padding()
         }
         .padding()
