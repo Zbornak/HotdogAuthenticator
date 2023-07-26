@@ -42,6 +42,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 299, height: 299)
+                    .rotationEffect(.degrees(180))
             }
             .onTapGesture {
                 showingImagePicker = true

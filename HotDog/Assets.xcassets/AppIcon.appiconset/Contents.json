@@ -1,6 +1,7 @@
 {
   "images" : [
     {
+      "filename" : "hot_dog_logo.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
