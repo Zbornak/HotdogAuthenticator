@@ -16,12 +16,11 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
+    @State private var resultsText = ""
     
     var body: some View {
         VStack {
             VStack {
-                Text("🌭")
-                    .font(.largeTitle)
                 Text("Hot Dog Authenticator v 1.1")
                     .font(.title)
                     .fontWeight(.bold)
@@ -57,14 +56,14 @@ struct ContentView: View {
                 }
                 .font(.title)
                 
-                Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
+                Text(resultsText)
                     .fontWeight(.bold)
             }
             
             Button {
                 calculateResult()
             } label: {
-                Text("Press me")
+                Text("Analyze")
             }
         }
         .padding()
@@ -100,6 +99,14 @@ struct ContentView: View {
 
                 for classification in results {
                     print(classification.identifier, classification.confidence)
+                    
+                    if classification.confidence > 0.9 {
+                        resultsText = "Hot Dog"
+                        isHotdog = true
+                    } else {
+                        resultsText = "Not Hot Dog"
+                        isHotdog = false
+                    }
                 }
             }
 
