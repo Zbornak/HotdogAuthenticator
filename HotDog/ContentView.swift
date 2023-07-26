@@ -70,6 +70,9 @@ struct ContentView: View {
             }
             .disabled(image == nil)
             .padding()
+            .buttonStyle(.borderedProminent)
+            .foregroundColor(.black)
+            .tint(.mint)
         }
         .padding()
         .onChange(of: inputImage) { _ in
