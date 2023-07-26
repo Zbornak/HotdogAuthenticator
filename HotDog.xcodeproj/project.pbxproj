@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		197825A02A70075100D80256 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1978259F2A70075100D80256 /* ImagePicker.swift */; };
+		198212202A713BCE00931BBD /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1982121F2A713BCE00931BBD /* UIImage+Resized.swift */; };
 		199019072A6E78A60068B3F0 /* HotDogApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199019062A6E78A60068B3F0 /* HotDogApp.swift */; };
 		199019092A6E78A60068B3F0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 199019082A6E78A60068B3F0 /* ContentView.swift */; };
 		1990190B2A6E78A70068B3F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1990190A2A6E78A70068B3F0 /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		1978259F2A70075100D80256 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1982121F2A713BCE00931BBD /* UIImage+Resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resized.swift"; sourceTree = "<group>"; };
 		199019032A6E78A60068B3F0 /* HotDog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotDog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		199019062A6E78A60068B3F0 /* HotDogApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotDogApp.swift; sourceTree = "<group>"; };
 		199019082A6E78A60068B3F0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				199019062A6E78A60068B3F0 /* HotDogApp.swift */,
 				199019082A6E78A60068B3F0 /* ContentView.swift */,
 				1978259F2A70075100D80256 /* ImagePicker.swift */,
+				1982121F2A713BCE00931BBD /* UIImage+Resized.swift */,
 				199019142A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel */,
 				1990190A2A6E78A70068B3F0 /* Assets.xcassets */,
 				1990190C2A6E78A70068B3F0 /* Preview Content */,
@@ -144,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				199019152A6E9CAF0068B3F0 /* HotDogClassifier.mlmodel in Sources */,
+				198212202A713BCE00931BBD /* UIImage+Resized.swift in Sources */,
 				197825A02A70075100D80256 /* ImagePicker.swift in Sources */,
 				199019092A6E78A60068B3F0 /* ContentView.swift in Sources */,
 				199019072A6E78A60068B3F0 /* HotDogApp.swift in Sources */,

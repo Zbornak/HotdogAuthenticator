@@ -42,6 +42,7 @@ struct ContentView: View {
                     .resizable()
                     .scaledToFit()
                     .frame(width: 299, height: 299)
+                    .clipped()
             }
             .onTapGesture {
                 showingImagePicker = true
@@ -78,7 +79,7 @@ struct ContentView: View {
     }
     
     func loadImage() {
-        guard let inputImage = inputImage else {
+        guard let inputImage = inputImage?.resized() else {
             return
         }
         
