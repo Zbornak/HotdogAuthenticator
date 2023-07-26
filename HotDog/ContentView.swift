@@ -60,6 +60,12 @@ struct ContentView: View {
                 Text(isHotdog ? "This is a Hot Dog" : "This is not a Hot Dog")
                     .fontWeight(.bold)
             }
+            
+            Button {
+                calculateResult()
+            } label: {
+                Text("Press me")
+            }
         }
         .padding()
         .onChange(of: inputImage) { _ in
@@ -83,7 +89,8 @@ struct ContentView: View {
             let config = MLModelConfiguration()
             let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
             let request = VNCoreMLRequest(model: model, completionHandler: results)
-            let handler = VNImageRequestHandler(cgImage: inputImage!.cgImage!, options: [:])
+            let ciImage = CIImage(image: inputImage!)
+            let handler = VNImageRequestHandler(cgImage: ciImage!.cgImage!)
             try handler.perform([request])
 
             func results(request: VNRequest, error: Error?) {
