@@ -21,9 +21,11 @@ struct ContentView: View {
     var body: some View {
         VStack {
             VStack {
-                Text("Hot Dog Authenticator v 1.1")
+                Text("Hot Dog Authenticator")
                     .font(.title)
                     .fontWeight(.bold)
+                Text("v1.1 XE")
+                    .font(.title)
                 Text("© TechDyne Global Propietary Systems Ltd.")
                     .font(.footnote)
             }
