@@ -16,7 +16,8 @@ struct ContentView: View {
     @State private var image: Image?
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-    @State private var resultsText = ""
+    @State private var resultsTextNotHotDog = ""
+    @State private var resultsTextHotDog = ""
     
     var body: some View {
         VStack {
@@ -63,8 +64,13 @@ struct ContentView: View {
 //                }
 //                .font(.largeTitle)
                 
-                Text(resultsText)
-                    .fontWeight(.bold)
+                VStack {
+                    Text(resultsTextNotHotDog)
+                        .fontWeight(.bold)
+                    
+                    Text(resultsTextHotDog)
+                        .fontWeight(.bold)
+                }
             }
             
             Button {
@@ -99,25 +105,34 @@ struct ContentView: View {
         do {
             let config = MLModelConfiguration()
             let model = try VNCoreMLModel(for: HotDogClassifier(configuration: config).model)
-            let request = VNCoreMLRequest(model: model, completionHandler: results)
+            let request = VNCoreMLRequest(model: model, completionHandler: observations)
             let ciImage = CIImage(image: inputImage!)
             let handler = VNImageRequestHandler(cgImage: ciImage!.cgImage!)
             try handler.perform([request])
 
-            func results(request: VNRequest, error: Error?) {
-                guard let results = request.results as? [VNClassificationObservation] else {
+            func observations(request: VNRequest, error: Error?) {
+                guard let observations = request.results as? [VNClassificationObservation] else {
                     fatalError("Fatal error.")
                 }
 
-                for classification in results {
-                    print(classification.identifier, classification.confidence)
+                let predictions = observations.map { observation in
+                    Prediction(classification: observation.identifier,
+                               confidencePercentage: observation.confidencePercentageString)
                 }
+                
+                resultsTextNotHotDog = "\(predictions[0].classification): \(predictions[0].confidencePercentage)%"
+                resultsTextHotDog = "\(predictions[1].classification): \(predictions[1].confidencePercentage)%"
             }
 
         } catch {
             print("Failed with error: \(error.localizedDescription).")
         }
     }
+}
+
+struct Prediction {
+    let classification: String
+    let confidencePercentage: String
 }
 
 struct ContentView_Previews: PreviewProvider {
