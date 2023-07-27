@@ -62,13 +62,13 @@ struct ContentView: View {
                     Text("🌭")
                     Text(isHotdog ? "" : "❌")
                 }
-                .font(.largeTitle)
+                .font(.system(size: 80))
                 
                 Text(resultsTextNotHotDog)
                     .fontWeight(.bold)
                     
                 Text(resultsTextHotDog)
-                    .fontWeight(.bold)
+                    .font(.caption)
             }
             
             Button {
@@ -121,7 +121,15 @@ struct ContentView: View {
                 resultsTextNotHotDog = "\(predictions[0].classification): \(predictions[0].confidencePercentage)%"
                 resultsTextHotDog = "\(predictions[1].classification): \(predictions[1].confidencePercentage)%"
                 
-                
+                if predictions[0].classification == "Hot Dog" {
+                    withAnimation {
+                        isHotdog = true
+                    }
+                } else {
+                    withAnimation {
+                        isHotdog = false
+                    }
+                }
             }
 
         } catch {
