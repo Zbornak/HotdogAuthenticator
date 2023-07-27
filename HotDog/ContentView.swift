@@ -57,20 +57,18 @@ struct ContentView: View {
             
             Spacer()
             
-            HStack {
-//                ZStack {
-//                    Text("🌭")
-//                    Text(isHotdog ? "" : "❌")
-//                }
-//                .font(.largeTitle)
-                
-                VStack {
-                    Text(resultsTextNotHotDog)
-                        .fontWeight(.bold)
-                    
-                    Text(resultsTextHotDog)
-                        .fontWeight(.bold)
+            VStack {
+                ZStack {
+                    Text("🌭")
+                    Text(isHotdog ? "" : "❌")
                 }
+                .font(.largeTitle)
+                
+                Text(resultsTextNotHotDog)
+                    .fontWeight(.bold)
+                    
+                Text(resultsTextHotDog)
+                    .fontWeight(.bold)
             }
             
             Button {
@@ -122,6 +120,8 @@ struct ContentView: View {
                 
                 resultsTextNotHotDog = "\(predictions[0].classification): \(predictions[0].confidencePercentage)%"
                 resultsTextHotDog = "\(predictions[1].classification): \(predictions[1].confidencePercentage)%"
+                
+                
             }
 
         } catch {
